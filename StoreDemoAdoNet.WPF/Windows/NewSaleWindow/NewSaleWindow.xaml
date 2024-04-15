@@ -1,0 +1,64 @@
+﻿<Window x:Class="AdoDotNetEFProject.WPF.Windows.NewSaleWindow.NewSaleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        xmlns:local="clr-namespace:AdoDotNetEFProject.WPF.WindowModels"
+        Title="{StaticResource ResourceKey=AppTitle}" 
+        Height="400" 
+        Width="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <local:NewSaleWindowModel/>
+    </Window.DataContext>
+
+    <StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Airplane"
+                       Target="airplane"/>
+                <ComboBox x:Name="Airplane"
+                          ItemsSource="{Binding Path=airplane}"
+                          SelectedItem="{Binding Path=SelectedAirplane}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=PlaneNumbers}"/>
+                            <TextBlock Text="{Binding Path=Colors}"/>
+                            <TextBlock Text="{Binding Path=PlaneProductionYear}"/>
+                            <TextBlock Text="{Binding Path=NumberOfPassanges}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Passengers"
+                       Target="passenger"/>
+                <ComboBox x:Name="Passengers"
+                          ItemsSource="{Binding Path=passenger }"
+                          SelectedItem="{Binding Path=SelectedPassenger}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=First_Name}"/>
+                                <TextBlock Text="{Binding Path=Last_Name}"/>
+                                <TextBlock Text="{Binding Path=Age}"/>
+                                <TextBlock Text="{Binding Path=PasseengerTakeOffTime}"/>
+                                <TextBlock Text="{Binding Path=PasseengerArrivalTime}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="{Binding Path=AirplaneId}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Save"
+                    Command="{Binding Path=CommandSave}"/>
+            <Button Content="Clear"
+                    Command="{Binding Path=CommandClear}"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

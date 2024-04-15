@@ -1,0 +1,56 @@
+﻿<Window x:Class="AdoDotNetEFProject.WPF.Windows.MainWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+        xmlns:local="clr-namespace:AdoDotNetEFProject.WPF.WindowModels"   
+        Title="{StaticResource ResourceKey=AppTitle}"  
+        WindowStartupLocation="CenterScreen"
+        Height="450" Width="629">
+
+    <Window.DataContext>
+         <local:MainWindowModel/>
+    </Window.DataContext>
+
+    <StackPanel>
+        <DataGrid ItemsSource="{Binding Path=airplaneInfo}"
+            AutoGenerateColumns="False">
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" 
+                                    Binding="{Binding Path=Id}" 
+                                    IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="Plane Number" 
+                    Binding="{Binding Path=PlaneNumbers}"
+                    IsReadOnly="True"/>
+
+                <DataGridTextColumn Header="Plane Colors" 
+                                    Binding="{Binding Path=Colors}"
+                                    IsReadOnly="True"/>
+                
+                <DataGridTemplateColumn Header="Airplane production Year" 
+                                        IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=PlaneProductionYear, StringFormat='dd.MM.yyyy'}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                
+                <DataGridTextColumn Header="Number Of Passengers" 
+                                    Binding="{Binding Path=NumberOfPassanges}"
+                                    IsReadOnly="True"/>
+               
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Create a new entry..."
+                Command="{Binding Path=AddNewProductButtonCommand}"/>
+        <Button Content="Update entry"
+                Command="{Binding Path=UpdateProductButtonCommand}"/>
+
+  
+    </StackPanel>
+    
+  </Window>
+

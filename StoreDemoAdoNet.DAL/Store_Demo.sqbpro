@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/User/Desktop/C# work lesson/StoreDemoAdoNet/StoreDemoAdoNet.DAL/Store_Demo.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_wIdth Id="0" wIdth="300"/><column_wIdth Id="1" wIdth="0"/><column_wIdth Id="2" wIdth="100"/><column_wIdth Id="3" wIdth="2234"/><column_wIdth Id="4" wIdth="0"/><expanded_item Id="0" parent="1"/><expanded_item Id="1" parent="1"/><expanded_item Id="2" parent="1"/><expanded_item Id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,15:mainsqlite_sequence"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE table_goods (
+    good_Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    amount INTEGER NOT NULL,
+    price REAL NOT NULL
+);
+
+CREATE TABLE table_users(
+    user_Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT NOT NULL
+);
+
+CREATE TABLE table_sales (
+    sale_Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    date TEXT NOT NULL,
+    user_Id INTEGER NOT NULL,
+    good_Id INTEGER NOT NULL,
+    FOREIGN KEY (user_Id) REFERENCES table_users(user_Id) 
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    FOREIGN KEY (good_Id) REFERENCES table_goods(good_Id) 
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+INSERT INTO table_users(full_name)
+VALUES ('Janet Jones'),
+       ('Rowland Kelly'),
+       ('Vadim Dan'),
+       ('Tana Lana'),
+       ('Kiril Andrew');
+	   
+INSERT INTO table_goods(name, amount, price)
+VALUES ('Cabana', 10, 20.5),
+       ('Loius Vitton', 1, 100),
+       ('Moscoviton', 99, 9.99);
+INSERT INTO table_sales(date, user_Id, good_Id)
+VALUES ('2024-02-19', 1, 1),
+       ('2024-03-20', 3, 2);
+
+	  
+SELECT table_sales.sale_Id AS Id,
+       date,
+       table_users.full_name AS full_name,
+       table_goods.name AS good_name
+FROM table_sales 
+    JOIN table_goods ON table_sales.good_Id = table_goods.good_Id
+    JOIN table_users ON table_sales.user_Id = table_users.user_Id;</sql><current_tab Id="0"/></tab_sql></sqlb_project>

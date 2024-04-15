@@ -1,0 +1,18 @@
+﻿<Application x:Class="AdoDotNetEntityFrameworkProject1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:AdoDotNetEntityFrameworkProject1"            
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <sys:String x:Key="AppTitle">EntityFrameWorkProject</sys:String>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="Styles/SearchTextBoxStyles.xaml"/>
+                <ResourceDictionary Source="Styles/ImagesStyles.xaml"/>
+                <ResourceDictionary Source="Styles/DataGridStylesRD.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

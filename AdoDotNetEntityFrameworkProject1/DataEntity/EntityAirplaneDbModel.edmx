@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdoNetEntityFrameWorkProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Airplane">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaneNumbers" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Full_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Age" Type="int" />
+          <Property Name="TakeOffDestination" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArrivalDestination" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="30" />
+          <Property Name="NumberOfPassengers" Type="int" />
+          <Property Name="TicketNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AdoNetEntityFrameWorkProjectModelStoreContainer">
+          <EntitySet Name="Airplane" EntityType="Self.Airplane" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdoNetEntityFrameWorkProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Airplane">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaneNumbers" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="TakeOffDestination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArrivalDestination" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfPassengers" Type="Int32" />
+          <Property Name="TicketNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AdoNetEntityFrameWorkProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Airplanes" EntityType="Self.Airplane" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdoNetEntityFrameWorkProjectModelStoreContainer" CdmEntityContainer="AdoNetEntityFrameWorkProjectEntities">
+          <EntitySetMapping Name="Airplanes">
+            <EntityTypeMapping TypeName="AdoNetEntityFrameWorkProjectModel.Airplane">
+              <MappingFragment StoreEntitySet="Airplane">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="PlaneNumbers" ColumnName="PlaneNumbers" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="TakeOffDestination" ColumnName="TakeOffDestination" />
+                <ScalarProperty Name="ArrivalDestination" ColumnName="ArrivalDestination" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="NumberOfPassengers" ColumnName="NumberOfPassengers" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
